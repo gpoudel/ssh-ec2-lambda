@@ -17,7 +17,7 @@ def lambda_handler(event, context):
 
 	ids = ['your-ec2-instance-id']
 	
-	#Start an instance
+	#Start the instance
 	ec2.instances.filter(InstanceIds=ids).start()
 
 	#Giving some time to start the instance completely 
@@ -57,5 +57,5 @@ def lambda_handler(event, context):
 	ssh.close()
 
 
-	#Stop an instance
+	#Stop the instance
 	ec2.instances.filter(InstanceIds=ids).stop()
