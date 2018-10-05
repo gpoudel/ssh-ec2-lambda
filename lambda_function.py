@@ -15,22 +15,22 @@ def lambda_handler(event, context):
 
 	ec2 = boto3.resource('ec2', region_name='your-ec2-region-name')
 
-	ids = ['your-ec2-instance-id']
+	instance_id = 'your-ec2-instance-id'
 	
+    instance = ec2.Instance(instance_id)
+
 	#Start the instance
-	ec2.instances.filter(InstanceIds=ids).start()
+	instance.start()
 
 	#Giving some time to start the instance completely 
 	time.sleep(60)
 
 	#print few details of the instance
-	instances = ec2.instances.filter(InstanceIds=ids)
-	for instance in instances:
-		print("Instance id - ", instance.id)
-		print("Instance public IP - ", instance.public_ip_address)
-		print("Instance private IP - ", instance.private_ip_address)
-		print("Public dns name - ", instance.public_dns_name)
-		print("----------------------------------------------------")
+    print("Instance id - ", instance.id)
+    print("Instance public IP - ", instance.public_ip_address)
+    print("Instance private IP - ", instance.private_ip_address)
+    print("Public dns name - ", instance.public_dns_name)
+    print("----------------------------------------------------")
 	
 	
 	
@@ -58,4 +58,4 @@ def lambda_handler(event, context):
 
 
 	#Stop the instance
-	ec2.instances.filter(InstanceIds=ids).stop()
+	instance.stop()
