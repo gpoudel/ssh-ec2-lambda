@@ -17,7 +17,7 @@ The Zip is complete and the only thing needed for this purpose. Built under "Ama
 
 
 ### Requirements
-* The EC2 must be in functionning and ready to accept bash commands
+* The EC2 must be functioning and ready to accept bash commands
 * The public key (.pem) file should be available in a S3 bucket, from which it can be downloaded and used to start ssh using paramiko
 
     <b>s3_client.download_file('YourBucketName','YourPEMFileObject.pem', '/tmp/keyname.pem')</b>
